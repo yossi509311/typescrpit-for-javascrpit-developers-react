@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build: docker/app
+    tty: true
+    volumes:
+      - .:/app
+      - .bash_history:/home/node/.bash_history
+      - .aws:/home/node/.aws
+      - node_modules:/app/node_modules
+    ports:
+      - 3000:3000
+    # user: node
+    command: yarn start
+volumes:
+  node_modules:
+    driver: 'local'
